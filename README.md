@@ -104,19 +104,28 @@ Built with **FastAPI**, it emphasizes:
 ```
 e_hrms/
 ├── app/
-│   ├── main.py
-│   ├── core/               # Auth, config, permissions
-│   ├── models/             # SQLAlchemy models
-│   ├── schemas/            # Pydantic schemas
-│   ├── routers/            # Modular API routes
-│   ├── services/           # Business logic (payroll, appraisal)
-│   ├── utils/              # Email/SMS hooks, helpers
-│   └── db/                 # DB session, init
-├── tests/
-├── requirements.txt
-├── README.md
-├── .env
-└── render.yaml
+│   ├── main.py                     # FastAPI app initialization
+│   ├── core/                       # Core logic: auth, config, permissions
+│   │   └── auth.py                 # JWT creation, validation, role checks
+│   ├── db/                         # Database setup and session
+│   │   └── session.py              # SQLAlchemy engine and get_db()
+│   ├── models/                     # SQLAlchemy ORM models
+│   │   └── employee.py             # Employee table schema
+│   ├── routers/                    # API route definitions
+│   │   └── employees.py            # Employee CRUD endpoints
+│   ├── schemas/                    # Pydantic request/response models
+│   │   └── employee.py             # EmployeeCreate, EmployeeOut, etc.
+│   ├── services/                   # Business logic layer
+│   │   └── payroll.py              # Salary computation, tax logic
+│   ├── utils/                      # Helper functions
+│   │   └── notifications.py        # Email/SMS hooks
+├── tests/                          # Unit and integration tests
+│   └── test_employee.py            # Sample test for employee endpoints
+├── README.md                       # Project overview and usage
+├── render.yaml                     # Render deployment configuration
+├── requirements.txt                # Python dependencies
+├── .env                            # Environment variables (not committed)
+
 ```
 
 ---
