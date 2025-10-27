@@ -4,8 +4,9 @@ from datetime import date
 class EmployeeCreate(BaseModel):
     name: str
     email: EmailStr
-    role: str
+    phone: str
     department: str
+    role: str
     date_joined: date
 
 class EmployeeOut(EmployeeCreate):
