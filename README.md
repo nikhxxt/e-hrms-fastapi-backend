@@ -1,97 +1,90 @@
 # 🧑‍💼 E-HRMS Backend API
 
-A modular FastAPI backend for managing core Human Resource Management System (HRMS) operations through structured REST APIs. The project focuses on backend architecture, API design, authentication, data validation, and database-driven HR workflows.
+A modular **FastAPI backend for Human Resource Management System (HRMS) workflows**, providing REST APIs for employee and HR-related operations.
+
+The project focuses on practical backend development including **API design, CRUD operations, authentication, data validation, database integration, and API documentation**.
 
 ---
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
-
----
-
-## 📚 Table of Contents
-
-- [📌 Overview](#-overview)
-- [✨ Features](#-features)
-- [🏗️ Architecture](#️-architecture)
-- [📡 API Modules](#-api-modules)
-- [🔐 Authentication](#-authentication)
-- [🛠️ Tech Stack](#️-tech-stack)
-- [📁 Project Structure](#-project-structure)
-- [🚀 Getting Started](#-getting-started)
-- [🧪 API Documentation](#-api-documentation)
-- [🌐 Live Demo](#-live-demo)
-- [☁️ Deployment](#️-deployment)
-- [📜 License](#-license)
-
----
-
-## 📌 Overview
-
-E-HRMS is a backend API designed to support common HR management workflows through modular REST endpoints.
-
-The application is built with **FastAPI** and follows a structured backend architecture with separate modules for routing, data models, authentication, and application logic.
-
-The project demonstrates practical backend development concepts including:
-
-- REST API design
-- Modular routing
-- Request validation
-- Database operations
-- Authentication and authorization
-- CRUD workflows
-- Structured API responses
-- API documentation
-- Backend deployment
+![Render](https://img.shields.io/badge/Deployed%20on-Render-purple)
 
 ---
 
 ## ✨ Features
 
 ### 👥 Employee Management
-
-- Create and manage employee records
+- Create employee records
 - Retrieve employee information
 - Update employee details
-- Organize employee-related data through REST APIs
-
-### 🔐 Authentication & Authorization
-
-- Secure API access using authentication mechanisms
-- Protected backend endpoints
-- Role-based access where implemented
+- Delete employee records
 
 ### 🕒 Attendance Management
+- Manage employee attendance records
+- Associate attendance data with employees
 
-- Manage employee attendance-related records
-- Provide structured endpoints for attendance workflows
-- Associate attendance information with employees
+### 🔐 Authentication & Authorization
+- Protected API endpoints
+- Token-based authentication
+- JWT-based access control
+- Password hashing
 
-### 🏢 HR Management
-
-- Support HR-related employee workflows
-- Organize HR operations through modular API routes
-- Maintain structured request and response models
-
-### 🗄️ Data Management
-
-- Database-backed data operations
-- Structured models for application entities
-- Validation of incoming API data
+### 🗄️ Database Operations
+- Database-backed application data
+- Structured data models
+- Request validation
+- ORM-based database interaction
 
 ### 📚 API Documentation
-
-- Automatic OpenAPI documentation
+- OpenAPI specification
 - Interactive Swagger UI
-- ReDoc documentation
-- Organized API routes and schemas
+- ReDoc API documentation
+
+---
+
+## 📡 API Modules
+
+### Employees
+
+| Method | Endpoint | Description |
+|--------|----------|-------------|
+| `POST` | `/employees/` | Create an employee |
+| `GET` | `/employees/` | Get all employees |
+| `GET` | `/employees/{employee_id}` | Get employee by ID |
+| `PUT` | `/employees/{employee_id}` | Update employee |
+| `DELETE` | `/employees/{employee_id}` | Delete employee |
+
+### Attendance
+
+Provides endpoints for managing employee attendance records.
+
+### HR Operations
+
+Provides APIs for HR-related employee management workflows.
+
+> The complete list of available endpoints and schemas is available through the live Swagger documentation.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Python** – Backend development
+- **FastAPI** – REST API framework
+- **Pydantic** – Data validation and serialization
+- **SQLAlchemy** – ORM and database interaction
+- **PostgreSQL / Neon** – Database
+- **JWT** – Authentication and access control
+- **bcrypt** – Password hashing
+- **Uvicorn** – ASGI server
+- **OpenAPI / Swagger UI** – API documentation
+- **ReDoc** – API reference
+- **Render** – Deployment
 
 ---
 
 ## 🏗️ Architecture
-
-The backend follows a modular structure that separates API routes, application logic, models, and supporting components.
 
 ```text
 Client
@@ -100,81 +93,20 @@ Client
 FastAPI Application
    │
    ├── Authentication
-   │
    ├── API Routers
-   │      ├── Employee APIs
-   │      ├── Attendance APIs
-   │      └── HR APIs
+   │     ├── Employees
+   │     ├── Attendance
+   │     └── HR Operations
    │
-   ├── Validation / Schemas
+   ├── Schemas / Validation
+   ├── Services
    │
-   ├── Business Logic
+   ▼
+Database Layer
    │
-   └── Database Layer
-            │
-            ▼
-        Database
+   ▼
+PostgreSQL / Neon
 ````
-
-This structure keeps individual API modules separated and makes the backend easier to maintain and extend.
-
----
-
-## 📡 API Modules
-
-The API is organized around core HRMS functionality.
-
-### Employees
-
-| Method   | Endpoint                   | Description                 |
-| -------- | -------------------------- | --------------------------- |
-| `POST`   | `/employees/`              | Create an employee          |
-| `GET`    | `/employees/`              | Retrieve employees          |
-| `GET`    | `/employees/{employee_id}` | Retrieve an employee        |
-| `PUT`    | `/employees/{employee_id}` | Update employee information |
-| `DELETE` | `/employees/{employee_id}` | Delete an employee          |
-
-### Attendance
-
-Attendance endpoints provide operations for managing employee attendance records.
-
-### HR Operations
-
-HR-related endpoints support employee and HR management workflows through structured API requests.
-
-> Endpoint names and available operations are documented in the generated OpenAPI specification.
-
----
-
-## 🔐 Authentication
-
-Protected endpoints require authentication before access is granted.
-
-Authentication is handled at the API layer, allowing protected routes to verify incoming requests before processing operations.
-
-Example authenticated request:
-
-```http
-Authorization: Bearer <token>
-```
-
-The exact authentication flow and available protected endpoints can be tested through Swagger UI.
-
----
-
-## 🛠️ Tech Stack
-
-* **Python 3.10+** – Backend development
-* **FastAPI** – REST API framework
-* **Pydantic** – Request validation and data serialization
-* **SQLAlchemy** – Database interaction
-* **JWT** – Token-based authentication
-* **bcrypt** – Password hashing
-* **PostgreSQL / Neon** – Database
-* **Uvicorn** – ASGI application server
-* **OpenAPI / Swagger UI** – API documentation
-* **ReDoc** – API reference documentation
-* **Render** – Deployment platform
 
 ---
 
@@ -191,22 +123,17 @@ e-hrms-fastapi-backend/
 │   └── main.py
 │
 ├── tests/
-│
 ├── requirements.txt
 ├── render.yaml
 ├── LICENSE
 └── README.md
 ```
 
-> The structure above represents the modular organization of the backend. File and directory names may vary based on the current repository implementation.
-
 ---
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-
-Make sure the following are installed:
 
 * Python 3.10+
 * pip
@@ -222,19 +149,17 @@ cd e-hrms-fastapi-backend
 
 ### Create a Virtual Environment
 
+**Windows**
+
 ```bash
 python -m venv venv
-```
-
-Activate it on Windows:
-
-```bash
 venv\Scripts\activate
 ```
 
-Activate it on macOS/Linux:
+**macOS / Linux**
 
 ```bash
+python3 -m venv venv
 source venv/bin/activate
 ```
 
@@ -246,7 +171,7 @@ pip install -r requirements.txt
 
 ### Configure Environment Variables
 
-Create a `.env` file and configure the environment variables required by the application.
+Create a `.env` file with the variables required by the application.
 
 Example:
 
@@ -255,9 +180,9 @@ DATABASE_URL=your_database_url
 SECRET_KEY=your_secret_key
 ```
 
-Use the variable names defined by the application configuration.
+> Keep credentials and secret keys out of the repository.
 
-### Run the Application
+### Run Locally
 
 ```bash
 uvicorn main:app --reload
@@ -273,7 +198,7 @@ http://127.0.0.1:8000
 
 ## 🧪 API Documentation
 
-Once the application is running, interactive API documentation is available through FastAPI.
+Once the application is running, use the following endpoints:
 
 ### Swagger UI
 
@@ -281,67 +206,57 @@ Once the application is running, interactive API documentation is available thro
 http://127.0.0.1:8000/docs
 ```
 
+Swagger UI allows you to:
+
+* Explore API endpoints
+* View request and response schemas
+* Authorize protected requests
+* Send requests directly from the browser
+* Inspect API responses
+
 ### ReDoc
 
 ```text
 http://127.0.0.1:8000/redoc
 ```
 
-Swagger UI can be used to:
-
-* Explore available endpoints
-* Inspect request and response schemas
-* Authenticate protected requests
-* Send API requests
-* Review response codes
-* Test API workflows interactively
+ReDoc provides a clean reference view of the API and its schemas.
 
 ---
 
 ## 🌐 Live Demo
 
-The API is deployed and available online.
+The API is deployed on **Render**.
 
-**API Base URL:**  
-[https://YOUR-EHRMS-URL.onrender.com](https://YOUR-EHRMS-URL.onrender.com)
+### 🔗 Swagger UI
 
-**Swagger UI:**  
-[https://YOUR-EHRMS-URL.onrender.com/docs](https://YOUR-EHRMS-URL.onrender.com/docs)
+[**Open Live Swagger Documentation →**](https://e-hrms-fastapi-backend.onrender.com/docs#/Employees/create_employee_employees__post)
 
-**ReDoc:**  
-[https://YOUR-EHRMS-URL.onrender.com/redoc](https://YOUR-EHRMS-URL.onrender.com/redoc)
+### 🔗 ReDoc
 
-You can use Swagger UI to explore and test the available API endpoints interactively.
----
+[**Open Live ReDoc →**](https://e-hrms-fastapi-backend.onrender.com/redoc)
 
+### 🔗 OpenAPI Specification
 
-## ☁️ Deployment
+[**View OpenAPI JSON →**](https://e-hrms-fastapi-backend.onrender.com/openapi.json)
 
-The backend is configured for deployment using **Render**.
+You can use the live Swagger UI to explore the available endpoints and interact with the deployed API.
 
-Deployment configuration is maintained through the project's deployment configuration files.
-
-After deployment, the API documentation can be accessed through the deployed `/docs` endpoint.
+> The free deployment may take some time to wake up after a period of inactivity.
 
 ---
 
-## 🧩 Backend Concepts Demonstrated
+## 🔐 Authentication
 
-This project demonstrates practical implementation of:
+Protected endpoints require authentication.
 
-* RESTful API development
-* Modular FastAPI architecture
-* CRUD operations
-* Pydantic validation
-* Database integration
-* Authentication
-* Authorization
-* Password security
-* JWT-based access control
-* Structured API responses
-* Error handling
-* OpenAPI documentation
-* Cloud deployment
+Example:
+
+```http
+Authorization: Bearer <token>
+```
+
+Authentication credentials and secret keys should be provided through environment variables rather than committed to the repository.
 
 ---
 
@@ -350,6 +265,7 @@ This project demonstrates practical implementation of:
 This project is licensed under the **MIT License**.
 
 See the [`LICENSE`](LICENSE) file for details.
+
 
 
 
