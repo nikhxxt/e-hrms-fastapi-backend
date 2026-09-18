@@ -21,6 +21,7 @@ A modular FastAPI backend for managing core Human Resource Management System (HR
 - [📁 Project Structure](#-project-structure)
 - [🚀 Getting Started](#-getting-started)
 - [🧪 API Documentation](#-api-documentation)
+- [🌐 Live Demo](#-live-demo)
 - [☁️ Deployment](#️-deployment)
 - [📜 License](#-license)
 
@@ -296,6 +297,23 @@ Swagger UI can be used to:
 * Test API workflows interactively
 
 ---
+
+## 🌐 Live Demo
+
+The API is deployed and available online.
+
+**API Base URL:**  
+[https://YOUR-EHRMS-URL.onrender.com](https://YOUR-EHRMS-URL.onrender.com)
+
+**Swagger UI:**  
+[https://YOUR-EHRMS-URL.onrender.com/docs](https://YOUR-EHRMS-URL.onrender.com/docs)
+
+**ReDoc:**  
+[https://YOUR-EHRMS-URL.onrender.com/redoc](https://YOUR-EHRMS-URL.onrender.com/redoc)
+
+You can use Swagger UI to explore and test the available API endpoints interactively.
+---
+
 
 ## ☁️ Deployment
 
